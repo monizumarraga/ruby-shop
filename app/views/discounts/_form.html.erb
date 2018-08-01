@@ -1,42 +1,50 @@
-<%= form_with(model: discount, local: true) do |form| %>
-  <% if discount.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(discount.errors.count, "error") %> prohibited this discount from being saved:</h2>
-
-      <ul>
-      <% discount.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class='row'>
+  <div class="well cv col-xs-12 col-offset-2">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="center">
+        <%= form_with(model: discount, local: true) do |form| %>
+          <% if discount.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(discount.errors.count, "error") %> prohibited this discount from being saved:</h2>
+        
+              <ul>
+              <% discount.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+        
+          <div class="field">
+            <%= form.label :name %>
+            <%= form.text_field :name %>
+          </div>
+        
+          <div class="field">
+            <%= form.label :typediscount %>
+            <%= form.select(:typediscount, options_for_select(['round units', 'minimum quantity'])) %>
+          </div>
+        
+          <div class="field">
+            <%= form.label :quantity %>
+            <%= form.number_field :quantity %>
+          </div>
+        
+          <div class="field">
+            <%= form.label :unitdiscount %>
+            <%= form.select(:unitdiscount, options_for_select(['€', '%'])) %>
+          </div>
+          
+          <div class="field">
+            <%= form.label :price %>
+            <%= form.text_field :price %>
+          </div>
+        
+          <div class="actions">
+            <%= form.submit %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
   </div>
-
-  <div class="field">
-    <%= form.label :typedisocunt %>
-    <%= form.text_field :typedisocunt %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
-  </div>
-
-  <div class="field">
-    <%= form.label :unitdiscount %>
-    <%= form.text_field :unitdiscount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

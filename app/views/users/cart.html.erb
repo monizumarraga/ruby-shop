@@ -1,0 +1,49 @@
+<h2>My cart</h2>
+
+<div class='row'>
+    <div class="well cv col-xs-12 col-offset-2">
+<% if @user_articles.count>0 %>
+    <table>
+          <div class="col-xs-8 col-xs-offset-2">
+              <div class="center">
+        <thead>
+            <tr>
+                <th class="col-xs-3">Article</th>
+                <th class="col-xs-3">Number</th>
+                <th class="col-xs-3">Price</th>
+                <th class="col-xs-1">Update units</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @user_articles.each do |user_articles| %>
+            <%= form_with(model: user_articles, local: true) do |form| %>
+                <tr>
+                    <td class="col-xs-3"><%= render 'articles/cart', obj:user_articles.article %></td>
+                    <td class="col-xs-3"><%= user_articles.number %></td>
+                    <td class="col-xs-3"><%= user_articles.price %></td>
+                    <td class="col-xs-1">
+                        <%= form.number_field :number %>
+                    </td>
+                    <td class="col-xs-3">
+                        <%= form.submit %>
+                    </td>
+                    <td class="col-xs-3">
+                        <%= link_to "Delete", user_article_path(user_articles), method: :delete, data: { confirm: 'Are you sure?' }  %>
+                    </td>
+                </tr>
+            <% end %>
+        <% end %>
+        </tbody>
+</div>
+</div>
+    </table>
+    <br>
+<%else%>
+    <p>No articles in your cart</p>
+<% end %>
+</div>
+</div>
+
+<%if @total %>
+    <h2>Total: <%= @total %>€</h2>
+<%end%>

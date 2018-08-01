@@ -1,10 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Articles</h2>
-<br>
-<button  class="btn btn-secondary btn-sm w"><%= link_to 'New Article', new_article_path %></button>
-<br>
-<br>
 <div class='row'>
     <div class="well cv col-xs-12 col-offset-2">
             <table>
@@ -13,33 +8,26 @@
               <thead>
                 <tr>
                   <th class="col-xs-3">Code</th>
-                  <th class="col-xs-4">Name</th>
+                  <th class="col-xs-3">Name</th>
                   <th class="col-xs-2">Units</th>
                   <th class="col-xs-2">Price</th>
                   <th class="col-xs-5">Discount</th>
-                  <th colspan="3"></th>
                 </tr>
               </thead>
               <tbody>
                 <% @articles.each do |article| %>
                   <tr>
                     <td class="col-xs-3"><%= article.code %></td>
-                    <td class="col-xs-4"><%= article.name %></td>
+                    <td class="col-xs-3"><%= article.name %></td>
                     <td class="col-xs-2"><%= article.units %></td>
                     <td class="col-xs-2"><%= article.price %></td>
                     <% if article.discount_id %>
                       <td class="col-xs-5"><%= Discount.find(article.discount_id).name %></td>
                     <% else %>
-                      <td class="col-xs-3"></td>
+                      <td class="col-xs-5"></td>
                     <% end %>
                     <td class="col-xs-3">
-                      <button class="btn btn-secondary btn-sm"><%= link_to 'Show', article%></button>
-                    </td>
-                    <td class="col-xs-3">
-                      <button class="btn btn-secondary btn-sm"><%= link_to 'Edit', edit_article_path(article) %></button>
-                    </td>
-                    <td class="col-xs-3">
-                      <button class="btn btn-danger btn-sm"><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                      <button class="btn btn-secondary btn-sm"><%= link_to "Add to my cart", user_articles_path(user: current_user, article_id: article.id, number: 1),method: :post %></button>
                     </td>
                   </tr>
                 <% end %>
@@ -51,4 +39,3 @@
         </div>
     </div>
 </div>
-

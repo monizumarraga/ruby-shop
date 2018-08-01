@@ -1,0 +1,15 @@
+<table>
+  <tbody>
+      <tr>
+        <td class="col-xs-2"><%= obj.code %></td>
+        <td class="col-xs-2"><%= obj.name %></td>
+        <td class="col-xs-2"><%= obj.units %></td>
+        <td class="col-xs-2"><%= obj.price %></td>
+        <% if obj.discount_id %>
+          <td class="col-xs-2"><%= Discount.find(obj.discount_id).name %></td>
+        <% else %>
+          <td class="col-xs-2"></td>
+        <% end %>
+      </tr>
+  </tbody>
+</table>

@@ -1,0 +1,52 @@
+<div class='row'>
+    <div class="well cv col-xs-12 col-offset-2">
+            <table>
+          <div class="col-xs-8 col-xs-offset-2">
+              <div class="center">
+                
+    
+              <thead>
+                <tr>
+                  <th class="col-xs-3">Code</th>
+                  <th class="col-xs-3">Name</th>
+                  <th class="col-xs-3">Units</th>
+                  <th class="col-xs-3">Price</th>
+                  <th class="col-xs-3">Discount</th>
+                  <th class="col-xs-3">Number</th>
+                  <%if !true%>
+                  <th class="col-xs-3">Change</th>
+                  <% end%>
+                  <th colspan="3"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @articles.each do |article| %>
+                  <tr>
+                    <td><%= article.code %></td>
+                    <td><%= article.name %></td>
+                    <td><%= article.units %></td>
+                    <td><%= article.price %></td>
+                    <% if article.discount_id %>
+                      <td><%= Discount.find(article.discount_id).name %></td>
+                    <% else %>
+                      <td></td>
+                    <% end %>
+                    <td><%= UserArticle.find_by(article_id: article.id).number %></td>
+                    <%if !true%>
+                    <td><%= number_field_tag id="number" %></td>
+                    <td class="col-xs-3">
+                      <button class="btn btn-secondary btn-sm"><%= link_to "Update", user_articles_path(user: current_user, article_id: article.id, number: "number"),method: :post %></button>
+                    </td>
+                    <td class="col-xs-3">
+                      <button class="btn btn-danger btn-sm"><%= link_to "Delete", user_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }  %></button>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>

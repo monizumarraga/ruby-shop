@@ -1,5 +1,10 @@
+
 <p id="notice"><%= notice %></p>
 
+<div class='row'>
+  <div class="well cv col-xs-12 col-offset-2">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="center">
 <p>
   <strong>Code:</strong>
   <%= @article.code %>
@@ -20,5 +25,22 @@
   <%= @article.price %>
 </p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<% if @article.discount_id %>
+  <p>
+    <strong>Discount:</strong>
+    <%= Discount.find(@article.discount_id).name %>
+  </p>
+<% else %>
+  <p>
+    <strong>Discount:</strong>
+  </p>
+<% end %>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-secondary btn-sm"><%= link_to 'Edit', edit_article_path(@article) %></button>
+<button class="btn btn-secondary btn-sm"><%= link_to 'Back', articles_path %></button>

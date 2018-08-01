@@ -1,15 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Discounts</h1>
+<h2>Discounts</h2>
 
+<br>
+<button  class="btn btn-secondary btn-sm w"><%= link_to 'New Discount', new_discount_path %></button>
+<br>
+<br>
+<div class='row'>
+    <div class="well cv col-xs-12 col-offset-2">
+            <table>
+          <div class="col-xs-8 col-xs-offset-2">
+              <div class="center">
+                
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Typedisocunt</th>
-      <th>Quantity</th>
-      <th>Unitdiscount</th>
-      <th>Price</th>
+      <th class="col-xs-3">Name</th>
+      <th class="col-xs-2">Quantity</th>
+      <th class="col-xs-2">Price</th>
+      <th class="col-xs-3">Type discounts</th>
+      <th class="col-xs-3">Unit discounts</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,19 +27,23 @@
   <tbody>
     <% @discounts.each do |discount| %>
       <tr>
-        <td><%= discount.name %></td>
-        <td><%= discount.typedisocunt %></td>
-        <td><%= discount.quantity %></td>
-        <td><%= discount.unitdiscount %></td>
-        <td><%= discount.price %></td>
-        <td><%= link_to 'Show', discount %></td>
-        <td><%= link_to 'Edit', edit_discount_path(discount) %></td>
-        <td><%= link_to 'Destroy', discount, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="col-xs-3"><%= discount.name %></td>
+        <td class="col-xs-2"><%= discount.quantity %></td>
+        <td class="col-xs-2"><%= discount.price %></td>
+        <td class="col-xs-3"><%= discount.typediscount %></td>
+        <td class="col-xs-3"><%= discount.unitdiscount %></td>
+        
+        <td class="col-xs-2">
+          <button class="btn btn-secondary btn-sm"><%= link_to 'Show', discount %></button>
+        </td>
+        <td class="col-xs-2">
+          <button class="btn btn-secondary btn-sm"><%= link_to 'Edit', edit_discount_path(discount) %></button>
+        </td>
+        <td class="col-xs-2">
+          <button class="btn btn-danger btn-sm"><%= link_to 'Destroy', discount, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Discount', new_discount_path %>

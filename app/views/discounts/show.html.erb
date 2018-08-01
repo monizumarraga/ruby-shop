@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+<div class='row'>
+  <div class="well cv col-xs-12 col-offset-2">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="center">
 <p>
   <strong>Name:</strong>
   <%= @discount.name %>
-</p>
-
-<p>
-  <strong>Typedisocunt:</strong>
-  <%= @discount.typedisocunt %>
 </p>
 
 <p>
@@ -16,14 +15,23 @@
 </p>
 
 <p>
-  <strong>Unitdiscount:</strong>
-  <%= @discount.unitdiscount %>
-</p>
-
-<p>
   <strong>Price:</strong>
   <%= @discount.price %>
 </p>
 
-<%= link_to 'Edit', edit_discount_path(@discount) %> |
-<%= link_to 'Back', discounts_path %>
+<p>
+  <strong>Typediscounts:</strong>
+  <%= @discount.typediscount %>
+</p>
+
+<p>
+  <strong>Unitdiscounts:</strong>
+  <%= @discount.unitdiscount %>
+</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-secondary btn-sm"><%= link_to 'Edit', edit_discount_path(@discount) %></button>
+<button class="btn btn-secondary btn-sm"><%= link_to 'Back', discounts_path %></button>
