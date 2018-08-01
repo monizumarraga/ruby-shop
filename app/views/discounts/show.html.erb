@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @discount.name %>
+</p>
+
+<p>
+  <strong>Typedisocunt:</strong>
+  <%= @discount.typedisocunt %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @discount.quantity %>
+</p>
+
+<p>
+  <strong>Unitdiscount:</strong>
+  <%= @discount.unitdiscount %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @discount.price %>
+</p>
+
+<%= link_to 'Edit', edit_discount_path(@discount) %> |
+<%= link_to 'Back', discounts_path %>
